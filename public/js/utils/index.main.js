@@ -54,6 +54,7 @@ const goIdx = (idx) => {
             $("#congestion").fadeIn("slow");
             setMap(data.message[0].station_addr)
             const wayList = [...new Set(data.message.map(e => e.way))]
+            $("#congestion_tables").html("")
             wayList.forEach(e => {
                 const table = genCongestionTable(e, data.message)
                 $("#congestion_tables").append(table)
