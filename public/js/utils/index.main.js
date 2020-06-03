@@ -100,6 +100,7 @@ const genCongestionTable = (way, rs) => {
 
 
 const setMap = (addr) => {
+    document.getElementById('map').innerHTML="";
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var geocoder = new kakao.maps.services.Geocoder();
     geocoder.addressSearch(addr, function (result, status) {
