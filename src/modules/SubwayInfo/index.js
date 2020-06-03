@@ -5,6 +5,7 @@ class SubwayInfo{
         const self = {}
         self.search_station_name = this.search_station_name
         self.search_station_idx = this.search_station_idx
+        self.get_congestion_idx = this.get_congestion_idx
         return self
     }
 
@@ -36,6 +37,23 @@ class SubwayInfo{
             return []
         }
     }
+
+    async get_congestion_idx(stationidx=""){
+        try{
+            const conn = await connectionPool.getConnection(async conn=>conn);
+            const query = "SELECT * FROM get_latest_congestion WHERE station_id = ?"
+            const idx = stationidx
+            const [rs] = await conn.query(query,[idx]);
+            await conn.commit();
+            conn.release()
+            return rs
+        }catch(e){
+            console.log(e);
+            return []
+        }
+    }
+
+    async
 }
 
 

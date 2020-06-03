@@ -28,6 +28,18 @@ router.get('/idx/:idx', async function(req,res,next){
     }
     
 })
+router.get('/congestion/:idx', async function(req,res,next){
+    try{
+        const service = new Service()
+        const idx = req.params.idx
+        const rs = await service.getCongestionIdx(idx)
+        res.send({status:res.status, success:true, error:false, messageType:"dictArray", message:rs})
+    }catch(e){
+        console.log(e)
+        res.send({status:res.status, success:false, error:true, messageType:"error", message:e})
+    }
+    
+})
 
 
 /* POST home page. */
