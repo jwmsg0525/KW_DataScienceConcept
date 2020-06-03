@@ -33,6 +33,7 @@ const goIdx = (idx) => {
 
     $.ajax(ajax_payload)
         .done((data) => {
+            $("#detail").css("display","none");
             if (!data.success) return
             if (data.message.length == 0) return
             $("#detail").fadeIn("slow");
@@ -49,6 +50,7 @@ const goIdx = (idx) => {
     }
     $.ajax(ajax_payload2)
         .done((data) => {
+            $("#congestion").css("display","none");
             if (!data.success) return
             if (data.message.length == 0) return
             $("#congestion").fadeIn("slow");
